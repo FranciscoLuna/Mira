@@ -23,15 +23,20 @@ def load_iconos():
 def random_img():
     cv2.imshow('main', random.choice(imgs[:-1]))
 
-## Dibuja numbers circulos aleatorios a una distancia dada del centro
-##def draw_circles(img, numbers, radius, distanceToCenter):
-##    colorCoding =w[0][0].size
-##    width = w[0].size/colorCoding
-##    height = w.size/w[0].size
-##    for n in range(numbers):
-##        
-##        random.randrange(0,)
+## Determina si se puede pintar un circulo de radio r y como centro el pixel (x, y) en img  ##def draw_circles(img, numbers, radius, distanceToCenter):
 
+def circle_exceeds_image(img, r, x, y):
+    res = True
+    colorCoding = img[0][0].size
+    width = img[0].size/colorCoding
+    height = img.size/img[0].size
+    if(r*2<=height and r*2<=width):
+        exceedstop = y-r <0
+        exceedsbot = y+r >height
+        exceedsleft = x-r <0
+        exceedsright = x+r>width
+        res = exceedstop or exceedsbot or exceedsleft or exceedsright
+    return res
 
 cv2.namedWindow('main', flags=cv2.WINDOW_AUTOSIZE)
 
@@ -72,9 +77,9 @@ cv2.rectangle(white_image, (im_height/2-1, im_width/2-1), (im_height/2+1, im_wid
 
 
 # Pintar circunferencias
-cv2.circle(white_image, (50, 50), 30, (0,0,0))
-##
-
+cv2.circle(white_image, (250, 250), 300, (0,0,0))
+##5010050
+100200100
 cv2.imshow('main', white_image)
 
 cv2.waitKey()
